@@ -15,9 +15,20 @@
     "parse-server": "~2.2.12"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "./node_modules/.bin/mocha --opts ./test/webpack.opts --watch",
+    "dashboard": "./node_modules/.bin/parse-dashboard --config ./dashboard-config.json"
   },
   "engines": {
     "node": ">=4.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-preset-es2015": "^6.9.0",
+    "chai": "^3.5.0",
+    "generate-ssh": "0.0.2",
+    "github": "^2.2.0",
+    "mocha": "^2.5.3",
+    "parse-dashboard": "^1.0.14"
   }
 }

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    <script src="https://adodson.com/hello.js/dist/hello.all.min.js"></script>
+</head>
+<body>
+
+    <a onclick="login()">login</a>
+
+    <script>
+
+        Parse.initialize( 'myAppId');
+        Parse.serverURL = 'http://localhost:1337/parse';
+
+        // Create a instagram provider
+        var provider = {
+            getAuthType() {
+                return 'github';
+            }
+        };
+
+        hello.init({
+            github: 'b97e6283ab6b10914350'
+        });
+
+        function login(){
+
+            hello.login('github', {
+                scope: 'repo, read:repo_hook, write:repo_hook'
+            }).then(function( auth_data ) {
+
+                console.log('You are signed in to github', auth_data );
+
+                // get user profile
+                return hello('github').api('me').then(function( me ){
+                    console.log( 'get my profile', me );
+
+                    // Login the user with the Github provider
+                    Parse.User.logInWith(provider, {
+                        authData: {
+                            access_token: auth_data.authResponse.access_token,
+                            id: me.id
+                        }
+                    }).then( function( user ) {
+                        console.log(user);
+                    }, function( error ) {
+                        console.log( error );
+                    });
+                });
+            }, function(e) {
+                alert('Signin error: ' + e.error.message);
+            });
+        }
+
+    </script>
+
+
+</body>
+</html>
