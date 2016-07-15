@@ -1,7 +1,7 @@
 import { addDeployKey, getDeployKeys, deleteDeployKey } from '../../lib/deploy_key';
 import { generate } from '../../lib/ssh_key';
 import { assert } from 'chai';
-import { access_token as accessToken, user, repo } from './token.json';
+import { access_token as accessToken, user, repo } from '../token.json';
 
 describe('Deploy keys', () => {
 
