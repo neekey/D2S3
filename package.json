@@ -8,8 +8,7 @@
     "url": "https://github.com/ParsePlatform/parse-server-example"
   },
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "start": "node index.js",
     "test": "./node_modules/.bin/mocha --opts ./test/webpack.opts --watch",
@@ -20,6 +19,8 @@
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
     "bluebird": "^3.4.1",
     "chai": "^3.5.0",
@@ -27,6 +28,7 @@
     "github": "^2.2.0",
     "mocha": "^2.5.3",
     "nodegit": "^0.14.1",
+    "s3": "^4.4.0",
     "tmp": "0.0.28"
   }
 }
